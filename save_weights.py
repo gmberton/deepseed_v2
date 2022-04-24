@@ -24,5 +24,5 @@ for layer in net.modules():
         layer.momentum = 0.1
 
 os.makedirs("weights", exist_ok=True)
-torch.save(net.state_dict(), f"weights/{args.seed_weights:02d}.pth")
+torch.save(net.state_dict(), f"weights/{args.seed_weights:03d}.pth")
 

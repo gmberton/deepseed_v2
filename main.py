@@ -25,7 +25,7 @@ parser.add_argument("--seed_optimization", type=int, default=0, help="_")
 args = parser.parse_args()
 start_time = datetime.now()
 # output_folder = f"logs/{start_time.strftime('%Y-%m-%d_%H-%M-%S')}"
-output_folder = f"logs/sw_{args.seed_weights:02d}__so_{args.seed_optimization:02d}"
+output_folder = f"logs/sw_{args.seed_weights:03d}__so_{args.seed_optimization:03d}"
 commons.make_deterministic(args.seed_optimization)
 commons.setup_logging(output_folder, console="debug")
 logging.info(" ".join(sys.argv))
@@ -45,7 +45,7 @@ n_val = len(val_labels)
 n_test = len(test_labels)
 
 net = build_network()
-net.load_state_dict(torch.load(f"weights/{args.seed_weights:02d}.pth"))
+net.load_state_dict(torch.load(f"weights/{args.seed_weights:03d}.pth"))
 net = net.to(args.device).half()
 
 criterion = nn.CrossEntropyLoss()
