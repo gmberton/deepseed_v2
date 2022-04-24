@@ -1,0 +1,6 @@
+__pycache__
+data
+.spyproject
+cl_*
+models_r*
+logs
