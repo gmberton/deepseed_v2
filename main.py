@@ -11,7 +11,7 @@ torch.backends.cudnn.benchmark = True
 
 import commons
 from models import build_network
-from loss import CrossEntropyLabelSmooth
+from ce_loss import CrossEntropyLabelSmooth
 from datasets import build_dataset, Augment
 
 parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
@@ -24,8 +24,8 @@ parser.add_argument("--seed_optimization", type=int, default=0, help="_")
 
 args = parser.parse_args()
 start_time = datetime.now()
-output_folder = f"logs/{start_time.strftime('%Y-%m-%d_%H-%M-%S')}"
-# output_folder = f"logs/sw_{args.seed_weights:02d}__so_{args.seed_optimization:02d}"
+# output_folder = f"logs/{start_time.strftime('%Y-%m-%d_%H-%M-%S')}"
+output_folder = f"logs/sw_{args.seed_weights:02d}__so_{args.seed_optimization:02d}"
 commons.make_deterministic(args.seed_optimization)
 commons.setup_logging(output_folder, console="debug")
 logging.info(" ".join(sys.argv))
